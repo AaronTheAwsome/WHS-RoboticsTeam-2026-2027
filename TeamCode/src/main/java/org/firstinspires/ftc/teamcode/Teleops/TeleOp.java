@@ -5,13 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.DriveSubsystem;
-import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "FIlthyClanker")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "Clanker")
 public class TeleOp extends OpMode {
 
     private DriveSubsystem myDriveTrain;
-    private Shooter        myShooter;
+
     private PanelsTelemetry dashboard = PanelsTelemetry.INSTANCE;
 
     private Gamepad currentGamepad  = new Gamepad();
@@ -23,8 +22,6 @@ public class TeleOp extends OpMode {
     @Override
     public void init() {
         myDriveTrain = new DriveSubsystem(hardwareMap);
-        myShooter    = new Shooter(hardwareMap);
-        myShooter.unload();
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -40,19 +37,6 @@ public class TeleOp extends OpMode {
         previousGamepad.copy(currentGamepad);
         currentGamepad.copy(gamepad1);
 
-        if (currentGamepad.b && !previousGamepad.b) {
-            myShooter.toggleMotor();
-        }
-
-        if (currentGamepad.a && !previousGamepad.a) {
-            myShooter.togglePickUp();
-        }
-        if (currentGamepad.left_bumper && !previousGamepad.left_bumper){
-            myShooter.smack();
-        }
-        if (currentGamepad.right_bumper && !previousGamepad.right_bumper){
-            myShooter.unload();
-        }
         double y  = applyDeadband(-currentGamepad.left_stick_y) * DRIVE_SCALE;
         double x  = applyDeadband( currentGamepad.left_stick_x) * DRIVE_SCALE;
         double rx = applyDeadband( currentGamepad.right_stick_x) * DRIVE_SCALE;
@@ -70,7 +54,6 @@ public class TeleOp extends OpMode {
         myDriveTrain.stop();
     }
 
-    /** Returns 0 if |value| < DEADBAND, otherwise returns value unchanged. */
     private double applyDeadband(double value) {
         return Math.abs(value) < DEADBAND ? 0.0 : value;
     }
