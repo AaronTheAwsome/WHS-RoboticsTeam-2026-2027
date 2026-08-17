@@ -9,24 +9,20 @@ public class DriveSubsystem {
 
     private static final String PINPOINT_HW_NAME = "pinpoint";
 
-
     private static final double X_POD_OFFSET_MM = -84.0;
 
     private static final double Y_POD_OFFSET_MM = -168.0;
 
-
     private static final GoBildaPinpointDriver.GoBildaOdometryPods POD_TYPE =
             GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD;
 
-
     private static final GoBildaPinpointDriver.EncoderDirection X_DIR =
             GoBildaPinpointDriver.EncoderDirection.FORWARD;
+
     private static final GoBildaPinpointDriver.EncoderDirection Y_DIR =
             GoBildaPinpointDriver.EncoderDirection.FORWARD;
 
-
     private static final double STRAFE_CORRECTION = 1.1;
-
 
     private final DcMotor frontLeft;
     private final DcMotor backLeft;
