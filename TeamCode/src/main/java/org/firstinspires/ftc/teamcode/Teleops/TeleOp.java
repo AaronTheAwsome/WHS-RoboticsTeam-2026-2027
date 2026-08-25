@@ -14,9 +14,11 @@ public class TeleOp extends OpMode {
     private PanelsTelemetry dashboard = PanelsTelemetry.INSTANCE;
 
     private Gamepad currentGamepad  = new Gamepad();
+
     private Gamepad previousGamepad = new Gamepad();
 
     private static final double DEADBAND    = 0.1;
+
     private static final double DRIVE_SCALE = 0.5;
 
     @Override

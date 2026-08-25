@@ -3,8 +3,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
-
+//import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 public class DriveSubsystem {
 
     private static final String PINPOINT_HW_NAME = "pinpoint";
@@ -31,7 +30,6 @@ public class DriveSubsystem {
 
     private final GoBildaPinpointDriver pinpoint;
 
-
     public DriveSubsystem(HardwareMap hardwareMap) {
 
         frontLeft  = hardwareMap.dcMotor.get("frontLeft");
@@ -57,7 +55,6 @@ public class DriveSubsystem {
     }
 
     public void drive(double y, double x, double rx) {
-
 
         pinpoint.update();
 
@@ -89,15 +86,14 @@ public class DriveSubsystem {
         backRight.setPower(0);
     }
 
-
     public void resetYaw() {
         pinpoint.resetPosAndIMU();
     }
 
-
     public double getHeadingRadians() {
         return pinpoint.getHeading();
     }
+
     public double getHeadingDegrees() {
         return Math.toDegrees(pinpoint.getHeading());
     }
