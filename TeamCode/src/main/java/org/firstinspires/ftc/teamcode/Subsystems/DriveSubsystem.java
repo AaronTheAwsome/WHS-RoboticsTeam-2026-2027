@@ -28,7 +28,6 @@ public class DriveSubsystem {
     private final DcMotor backLeft;
     private final DcMotor frontRight;
     private final DcMotor backRight;
-
     private final GoBildaPinpointDriver pinpoint;
 
     public DriveSubsystem(HardwareMap hardwareMap) {
