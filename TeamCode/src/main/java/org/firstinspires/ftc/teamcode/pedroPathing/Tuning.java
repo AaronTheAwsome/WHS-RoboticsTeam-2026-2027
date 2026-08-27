@@ -49,7 +49,7 @@ public class Tuning extends SelectableOpMode {
     static PoseHistory poseHistory;
 
     @IgnoreConfigurable
-    static TelemetryManager telemetryM;
+    public static TelemetryManager telemetryM;
 
     @IgnoreConfigurable
     static ArrayList<String> changes = new ArrayList<>();
@@ -773,14 +773,14 @@ class LateralZeroPowerAccelerationTuner extends OpMode {
  * @author Jacob Ophoven - 18535 Frozen Code
  * @version 1.0, 12/26/2025
  */
-class PredictiveBrakingTuner extends OpMode {
+public class   PredictiveBrakingTuner extends OpMode {
     private static final double[] TEST_POWERS =
             {1, 1, 1, 0.9, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2};
     private static final double BRAKING_POWER = -0.2;
 
     private static final int DRIVE_TIME_MS = 1000;
 
-    private enum State {
+    public enum State {
         START_MOVE,
         WAIT_DRIVE_TIME,
         APPLY_BRAKE,
@@ -789,12 +789,12 @@ class PredictiveBrakingTuner extends OpMode {
         DONE
     }
 
-    private static class BrakeRecord {
-        double timeMs;
-        Pose pose;
-        double velocity;
+    public static class BrakeRecord {
+        public double timeMs;
+        public Pose pose;
+        public double velocity;
 
-        BrakeRecord(double timeMs, Pose pose, double velocity) {
+        public BrakeRecord(double timeMs, Pose pose, double velocity) {
             this.timeMs = timeMs;
             this.pose = pose;
             this.velocity = velocity;
