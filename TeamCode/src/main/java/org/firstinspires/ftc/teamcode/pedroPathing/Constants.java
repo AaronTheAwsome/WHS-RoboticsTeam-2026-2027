@@ -20,7 +20,9 @@ public class Constants {
     private static double kQuadratic;
     public static FollowerConstants followerConstants = new FollowerConstants()
             .predictiveBrakingCoefficients(new PredictiveBrakingCoefficients(kP, kLinear, kQuadratic))
-            .mass(7.7);
+            .mass(7.7)
+            .forwardZeroPowerAcceleration(-28.156685169401023 )
+            .lateralZeroPowerAcceleration( -55.666828756439486);
 
    public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
@@ -29,16 +31,19 @@ public class Constants {
             .leftRearMotorName("backLeft")
             .leftFrontMotorName("frontLeft")
             .leftFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
+            .leftRearMotorDirection(DcMotorSimple.Direction.FORWARD)
             .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD);
+            .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
+           .xVelocity(65.29346952663633)
+           .yVelocity(52.3578452763595)
+           ;
     public static PinpointConstants localizerConstants = new PinpointConstants()
-            .forwardPodY(-4)
-            .strafePodX(7)
+            .forwardPodY(4.09)
+            .strafePodX(6.40)
             .distanceUnit(DistanceUnit.INCH)
             .hardwareMapName("pinpoint")
             .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
-            .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD)
+            .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED)
             .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD);
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
