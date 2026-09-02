@@ -85,9 +85,9 @@ public class DriveSubsystem {
         backRight.setPower(0);
     }
 
-    public void resetYaw() {
+    /*public void resetYaw() {
         pinpoint.resetPosAndIMU();
-    }
+    }*/
 
     public double getHeadingRadians() {
         return pinpoint.getHeading();
