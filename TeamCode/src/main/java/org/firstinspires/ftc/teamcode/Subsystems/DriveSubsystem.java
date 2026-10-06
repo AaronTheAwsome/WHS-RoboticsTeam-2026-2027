@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
-import com.pedropathing.ftc.drivetrains.MecanumConstants;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.Autos.pedroPathing.Constants;
@@ -31,10 +31,10 @@ public class DriveSubsystem {
     private final GoBildaPinpointDriver pinpoint;
 
     public DriveSubsystem(HardwareMap hardwareMap) {
-        frontLeft  = hardwareMap.dcMotor.get(Constants.driveConstants.leftFrontMotorName);
-        backLeft   = hardwareMap.dcMotor.get(Constants.driveConstants.leftRearMotorName);
-        frontRight = hardwareMap.dcMotor.get(Constants.driveConstants.rightFrontMotorName);
-        backRight  = hardwareMap.dcMotor.get(Constants.driveConstants.rightRearMotorName);
+        frontLeft  = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        backLeft   = hardwareMap.get(DcMotorEx.class, "backLeft");
+        frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
+        backRight  = hardwareMap.get(DcMotorEx.class, "backRight");
 
          frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
     //    backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
