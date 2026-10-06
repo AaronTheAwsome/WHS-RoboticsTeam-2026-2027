@@ -4,7 +4,7 @@ import com.pedropathing.ftc.drivetrains.MecanumConstants;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+import org.firstinspires.ftc.teamcode.Autos.pedroPathing.Constants;
 public class DriveSubsystem {
 
     private static final String PINPOINT_HW_NAME = "pinpoint";
