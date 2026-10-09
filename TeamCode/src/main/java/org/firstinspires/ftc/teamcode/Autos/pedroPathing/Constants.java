@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Autos.pedroPathing;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.revhub.drivetrains.MecanumConfig;
 import com.pedropathing.revhub.localizers.RevHubIMU;
@@ -28,7 +27,6 @@ public class Constants {
         return null;
     } // so errors are made in other files
 
-    @Config // Allows FtcDashboard/Panels to see these values live
     public static class FollowerParameters {
 
         public static double drive_kP = 0.020504;

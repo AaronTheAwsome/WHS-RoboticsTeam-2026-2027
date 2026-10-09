@@ -1,2 +1,49 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.10.0'
+}
+
+import javax.net.ssl.*
+import java.security.cert.X509Certificate
+
+def logFile = new File(settingsDir, "build/prefetch.log")
+logFile.parentFile.mkdirs()
+logFile.text = ""
+
+try {
+    TrustManager[] trustAllCerts = [
+        new X509TrustManager() {
+            X509Certificate[] getAcceptedIssuers() { return null }
+            void checkClientTrusted(X509Certificate[] certs, String authType) {}
+            void checkServerTrusted(X509Certificate[] certs, String authType) {}
+        }
+    ] as TrustManager[]
+
+    SSLContext sc = SSLContext.getInstance("TLS")
+    sc.init(null, trustAllCerts, new java.security.SecureRandom())
+    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
+    HttpsURLConnection.setDefaultHostnameVerifier({ hostname, session -> true } as HostnameVerifier)
+
+    ["", "com/", "com/bylazar/", "com/bylazar/fullpanels/", "com/bylazar/fullpanels/1.0.12/", "fullpanels/", "releases/"].each { path ->
+        try {
+            def url = new URI("https://maven.bylazar.com/${path}").toURL()
+            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection()
+            conn.setConnectTimeout(5000)
+            conn.setReadTimeout(5000)
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0")
+            int code = conn.responseCode
+            String text = ""
+            if (code == 200) {
+                text = conn.inputStream.text
+                if (text.length() > 300) text = text.substring(0, 300)
+            }
+            logFile.append("PROBE '${path}': HTTP ${code} [${text.replaceAll('\\s+', ' ')}]\n")
+        } catch (Exception e) {
+            logFile.append("PROBE ERROR '${path}': ${e.toString()}\n")
+        }
+    }
+} catch (Exception e) {
+    logFile.append("MBL SETUP ERROR: ${e.toString()}\n")
+}
+
 include ':FtcRobotController'
 include ':TeamCode'

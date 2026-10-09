@@ -1,7 +1,11 @@
     repositories {
     mavenCentral()
-        google() // Needed for androidx
+    google() // Needed for androidx
     maven { url = "https://repo.dairy.foundation/releases/" }
+    maven { url = "https://maven.brott.dev/" }
+    maven { url = file("${rootDir}/build/localRepo") }
+    maven { url = "https://maven.bylazar.com/" }
+    maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -22,6 +26,5 @@ dependencies {
     implementation 'com.pedropathing.ivy:pedro:1.1.1'
     implementation 'com.acmerobotics.dashboard:dashboard:0.6.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
-    implementation 'com.bylazar:fullpanels:1.0.12'
 }
 

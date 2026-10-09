@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Teleops;
 
-import com.bylazar.telemetry.PanelsTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
@@ -11,7 +10,6 @@ public class TeleOp extends OpMode {
 
     private DriveSubsystem myDriveTrain;
 
-    private PanelsTelemetry dashboard = PanelsTelemetry.INSTANCE;
 
     private Gamepad currentGamepad  = new Gamepad();
 
