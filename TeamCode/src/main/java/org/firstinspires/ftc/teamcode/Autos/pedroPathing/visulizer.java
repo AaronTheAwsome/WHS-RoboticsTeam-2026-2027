@@ -14,27 +14,17 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.Autos.pedroPathing.Constants;
+
 @Autonomous(name = "visulizer", group = "Autonomous")
 public class visulizer extends LinearOpMode {
 
     private Follower follower;
 
-    private final PoseFactory poseFactory = PoseFactory.degrees();
-
-    private final Pose start = poseFactory.of(10.5, 35, 90);
-    private final Pose path1Start = poseFactory.of(10.5, 35, 0);
-    private final Pose path1 = poseFactory.of(56, 35.9, 90);
-    private final Pose path2 = poseFactory.of(32.3393, 35.9574, 90);
-    private final Pose point3 = poseFactory.of(32.3126, 106.2093, 180);
-    private final Pose point4 = poseFactory.of(10.1786, 106.3669, 0);
-
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
-                follow(follower, path1()),
-                follow(follower, path2()),
-                follow(follower, path3()),
-                follow(follower, path4())
+
         );
     }
 
@@ -42,7 +32,6 @@ public class visulizer extends LinearOpMode {
     public void runOpMode() {
         Scheduler.reset();
         follower = Constants.createFollower(hardwareMap);
-        follower.setPose(start);
         follower.update();
 
         waitForStart();
@@ -65,19 +54,4 @@ public class visulizer extends LinearOpMode {
         }
     }
 
-    public Path path1() {
-        return line(path1Start, path1).linear(path1Start, path1);
-    }
-
-    public Path path2() {
-        return line(path1, path2).linear(path1, path2);
-    }
-
-    public Path path3() {
-        return line(path2, point3).linear(path2, point3);
-    }
-
-    public Path path4() {
-        return line(point3, point4).linear(point3, point4);
-    }
 }
