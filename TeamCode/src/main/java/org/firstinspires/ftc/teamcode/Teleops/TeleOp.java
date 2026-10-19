@@ -38,9 +38,9 @@ TeleOp extends OpMode {
         previousGamepad.copy(currentGamepad);
         currentGamepad.copy(gamepad1);
 
-        double y  = applyDeadband(-currentGamepad.left_stick_y) * DRIVE_SCALE;
-        double x  = applyDeadband(currentGamepad.left_stick_x) * DRIVE_SCALE;
-        double rx = applyDeadband(currentGamepad.right_stick_x) * DRIVE_SCALE;
+        double rx  = applyDeadband(-currentGamepad.left_stick_y) * DRIVE_SCALE;
+        double y  = applyDeadband(currentGamepad.left_stick_x) * DRIVE_SCALE;
+        double x = applyDeadband(currentGamepad.right_stick_x) * DRIVE_SCALE;
 
         myDriveTrain.drive(y, x, rx);
 
