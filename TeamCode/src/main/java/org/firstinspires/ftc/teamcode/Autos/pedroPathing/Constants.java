@@ -16,39 +16,18 @@ import com.pedropathing.revhub.drivetrains.MecanumConfig;
 import com.pedropathing.revhub.localizers.TwoWheelConfig;
 import com.pedropathing.revhub.localizers.TwoWheelLocalizer;
 public class Constants {
+
     public static MecanumConfig drivetrainConfig = new MecanumConfig(c -> {
-        c.frontLeftName.set("leftFront");
-        c.frontRightName.set("rightFront");
-        c.backLeftName.set("leftBack");
-        c.backRightName.set("rightBack");
+        c.frontLeftName.set("frontLeft");
+        c.frontRightName.set("frontRight");
+        c.backLeftName.set("backLeft");
+        c.backRightName.set("backRight");
         c.frontLeftDirection.set(DcMotorSimple.Direction.REVERSE);
         c.frontRightDirection.set(DcMotorSimple.Direction.FORWARD);
-        c.backLeftDirection.set(DcMotorSimple.Direction.REVERSE);
+        c.backLeftDirection.set(DcMotorSimple.Direction.FORWARD);
         c.backRightDirection.set(DcMotorSimple.Direction.FORWARD);
     });
 
-    public static TwoWheelConfig localizerConfig = new TwoWheelConfig(c -> {
-        c.yPodName.set("leftRear");
-        c.xPodName.set("rightRear");
-        c.imuName.set("imu");
-
-
-        RevHubOrientationOnRobot.LogoFacingDirection up = RevHubOrientationOnRobot.LogoFacingDirection.UP;
-        RevHubOrientationOnRobot.UsbFacingDirection backward = RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
-
-        c.yPodDirection.set(Encoder.FORWARD);
-        c.xPodDirection.set(Encoder.FORWARD);
-
-
-        c.xPodOffset.set(0.0);
-        c.yPodOffset.set(0.0);
-        c.xPodOffset.set(0.0);
-        c.yPodOffset.set(0.0);
-
-
-        c.forwardTicksToInches.set(1.0);
-        c.strafeTicksToInches.set(1.0);
-    });
 
 
     public static ForesightConfig foresightConfig = new ForesightConfig(c -> {
@@ -65,7 +44,7 @@ public class Constants {
     });
 
 
-    public static Follower createFollower(HardwareMap hardwareMap) {
+    /*public static Follower createFollower(HardwareMap hardwareMap) {
         TwoWheelLocalizer localizer = new TwoWheelLocalizer(hardwareMap, localizerConfig);
 
         Mecanum drivetrain = new Mecanum(hardwareMap, drivetrainConfig);
@@ -73,5 +52,5 @@ public class Constants {
         Foresight foresight = new Foresight(foresightConfig);
 
         return new Follower(localizer, drivetrain, foresight);
-    }
+    }*/
 }
