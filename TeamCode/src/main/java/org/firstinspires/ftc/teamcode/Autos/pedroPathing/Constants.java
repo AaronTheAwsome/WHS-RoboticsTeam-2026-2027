@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autos.pedroPathing;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.revhub.localizers.Encoder;
+import com.pedropathing.revhub.localizers.PinpointConfig;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -29,28 +30,5 @@ public class Constants {
     });
 
 
-
-    public static ForesightConfig foresightConfig = new ForesightConfig(c -> {
-
-
-        c.forwardTranslational.set(Controller.proportional(0.1));
-        c.strafeTranslational.set(Controller.proportional(0.1));
-
-
-        c.headingFeedback.set(Controller.proportional(0.1));
-
-
-        c.maxVelocityConstraint.set(1.0);
-    });
-
-
-    /*public static Follower createFollower(HardwareMap hardwareMap) {
-        TwoWheelLocalizer localizer = new TwoWheelLocalizer(hardwareMap, localizerConfig);
-
-        Mecanum drivetrain = new Mecanum(hardwareMap, drivetrainConfig);
-
-        Foresight foresight = new Foresight(foresightConfig);
-
-        return new Follower(localizer, drivetrain, foresight);
-    }*/
+    public static PinpointConfig localizerConfig;
 }
